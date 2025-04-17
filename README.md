@@ -1,51 +1,97 @@
-#  Comparing Deep Reinforcement Learning and Traditional Methods for Adaptive Portfolio Management
+# Comparing Deep Reinforcement Learning and Traditional Methods for Adaptive Portfolio Management
 
-This repository contains the full implementation of a graduate-level research project conducted at Tennessee Technological University. The objective is to evaluate and compare traditional machine learning models and deep reinforcement learning (DRL) agents for adaptive stock trading under varying market regimes.
+This project explores and compares the effectiveness of Deep Reinforcement Learning (DRL) agents and traditional Machine Learning (ML) models in stock trading strategy development. The analysis evaluates model performance across multiple market regimes using real-world data and metrics aligned with financial portfolio optimization.
 
-##  Overview
+---
 
-The study benchmarks:
+##  Project Objective
 
-- **Traditional Models**:
-  - Gradient Boosting Machines (GBM)
-  - Deep Neural Networks (DNN)
+To compare traditional ML methods like Gradient Boosting Machines (GBM) and Deep Neural Networks (DNN) with DRL agents (DQN, PPO, A2C) for adaptive trading. The goal is to assess:
+- Predictive accuracy of ML models
+- Strategy robustness and adaptability of DRL agents
+- Performance consistency across dynamic regimes (bull, bear, volatile)
 
-- **Deep Reinforcement Learning Agents**:
-  - Deep Q-Network (DQN)
-  - Proximal Policy Optimization (PPO)
-  - Advantage Actor-Critic (A2C)
+---
 
-Models are tested across real-world stock data (2018–2023) and market conditions (bullish, bearish, sideways) using a custom OpenAI Gym trading environment.
+##  Key Results
 
-##  Key Findings
+### Traditional ML Models
 
-- **GBM** had the best prediction accuracy (MSE ≈ 5.60, R² ≈ 0.998).
-- **A2C** showed the most robust trading performance with highest cumulative rewards and best Sharpe/Sortino ratios.
-- DRL agents outperformed traditional models in adaptability but were more sensitive to training conditions and randomness.
+| Model | MSE     | R²      |
+|-------|---------|---------|
+| GBM   | 5.60    | 0.998   |
+| DNN   | 485.60  | 0.819   |
 
-##  Repository Structure
+GBM achieved the highest prediction accuracy with the lowest mean squared error.
 
-- cleaned_stock_data.csv – Preprocessed stock data
-- notebooks/
-  - 01_traditional_models.ipynb – GBM and DNN evaluation
-  - 02_drl_environment.ipynb – Custom Gym environment
-  - 03_drl_agents.ipynb – DQN, PPO, A2C training
-  - 04_market_regimes.ipynb – Market condition analysis
-  - 05_results_summary.ipynb – Final graphs and comparisons
+![Model Predictions vs Actual](DNN%20XGBoost%20Algorithm%20Comparision%20Result.png)
 
-##  Technologies
+---
 
-- Python, NumPy, Pandas, scikit-learn, TensorFlow/Keras
-- XGBoost
-- OpenAI Gym, stable-baselines3
-- Matplotlib, Seaborn
+### DRL Agent Performance (Overall)
+
+| Agent | Total Reward |
+|-------|--------------|
+| DQN   | 13.85        |
+| PPO   | 65.85        |
+| A2C   | 151.67       |
+
+![Cumulative Rewards](Cumulative%20Rewards%20Over%20Time.png)
+
+---
+
+### DRL Agent Performance by Market Regime
+
+#### Bull Market
+A2C and PPO outperformed DQN significantly.
+
+![Bull Market](Cumulative%20Rewards_Bull%20Market.png)
+
+#### Bear Market
+DQN preserved capital effectively; A2C struggled with volatility.
+
+![Bear Market](Cumulative%20Rewards_Bear%20Market.png)
+
+#### Volatile Market
+A2C adapted best to changing conditions and maintained upward growth.
+
+![Volatile Market](Cumulative%20Rewards_Volatile%20Market.png)
+
+---
+
+##  Methodology
+
+- **ML models**: Trained using historical stock data (OHLCV) from 2018–2023.
+- **DRL environment**: Custom OpenAI Gym-compatible environment simulating portfolio actions (buy/sell/hold).
+- **Market segmentation**: Data separated into bullish, bearish, and sideways/volatile markets using 30-day moving averages and % thresholds.
+- **Metrics**:
+  - ML: Mean Squared Error (MSE), R²
+  - DRL: Total reward, Sharpe Ratio, Sortino Ratio, Maximum Drawdown
+
+---
+
+##  Repository Contents
+
+- `CSC 6230 Code.zip` - Full implementation of traditional models and DRL agents
+- `*.png` - Visualizations of performance and predictions
+- `Project Proposal_Swieder.pdf` - Initial proposal outlining the goals and structure
+- `Problem Statement_Swieder.pdf` - Research problem and planned methods
+
+---
 
 ##  Future Work
 
-- Incorporate transaction costs and slippage
-- Experiment with high-frequency data
-- Apply hybrid ensemble models for stability
-- Implement dynamic position sizing and risk control
+- Incorporate transaction costs and slippage into the DRL environment.
+- Evaluate models with higher-frequency (minute/hourly) trading data.
+- Extend to multi-asset portfolio optimization and risk-sensitive reward shaping.
+
+---
+
+##  License and Authorship
+
+This project was created and executed solely by Blaine Swieder for CSC 6230: Machine Learning. No external codebases or datasets were used beyond freely accessible public historical market data.
+
+
 
 ##  License
 
