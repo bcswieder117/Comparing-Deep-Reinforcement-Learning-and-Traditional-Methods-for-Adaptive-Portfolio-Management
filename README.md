@@ -89,13 +89,13 @@ A2C adapted best to changing conditions and maintained upward growth.
 
 ##  License and Authorship
 
-This project was created and executed solely by Blaine Swieder for CSC 6230: Machine Learning. No external codebases or datasets were used beyond freely accessible public historical market data.
+This project was created and executed solely by Blaine Swieder for CSC 6230: Machine Learning. No external codebases or datasets were used beyond freely accessible public historical market data sourced from FRED.
 
 
 
 ##  License
 
-This work is released for academic/research use only. No financial advice is provided.
+This work is released for academic/research use only. No financial advice is provided. This project was a personal one and was primarily used for CSC 6230: Machine Learning at Tennessee Tech.
 
 ---
 
